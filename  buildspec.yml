@@ -6,6 +6,12 @@ phases:
     commands:
       - echo building front end application
       - cd web
+  pre-build:
+    commands:
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=MichaelMarshal1796_react-starter >result.json
+      - cat result.json
+      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
+
   build:
     commands:
       - echo build and copy files to S3 bucket
