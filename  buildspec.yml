@@ -1,0 +1,15 @@
+version: 0.1
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - echo building front end application
+      - cd web
+  build:
+    commands:
+      - echo build and copy files to S3 bucket
+      - npm install
+      - npm run build
+      - aws s3 sync --delete dist/ s3://sample-react-mike
+      - echo Finished copied to s3 bucket
