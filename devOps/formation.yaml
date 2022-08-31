@@ -310,40 +310,40 @@ Resources:
 
   #end codeBuild creation
   CodeBuildSonar:
-      Type: "AWS::CodeBuild::Project"
-      DependsOn:
-        - CodebuildFrontendRole
-      Properties:
+    Type: "AWS::CodeBuild::Project"
+    DependsOn:
+      - CodebuildFrontendRole
+    Properties:
+      Name: "react-sonar"
+      Source:
+        BuildSpec: "devOps/sonar.yml"
+        InsecureSsl: false
+        Type: "CODEPIPELINE"
+      Artifacts:
+        EncryptionDisabled: false
         Name: "react-sonar"
-        Source:
-          BuildSpec: "devOps/sonar.yml"
-          InsecureSsl: false
-          Type: "CODEPIPELINE"
-        Artifacts:
+        Packaging: "NONE"
+        Type: "CODEPIPELINE"
+      Cache:
+        Type: "NO_CACHE"
+      Environment:
+        ComputeType: "BUILD_GENERAL1_SMALL"
+        Image: "aws/codebuild/standard:5.0"
+        ImagePullCredentialsType: "CODEBUILD"
+        PrivilegedMode: false
+        Type: "LINUX_CONTAINER"
+      ServiceRole: !Sub "arn:aws:iam::${AWS::AccountId}:role/service-role/codebuild-react-frontEnd-service-${AWS::Region}-role"
+      TimeoutInMinutes: 60
+      QueuedTimeoutInMinutes: 480
+      EncryptionKey: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/aws/s3"
+      BadgeEnabled: false
+      LogsConfig:
+        CloudWatchLogs:
+          Status: "ENABLED"
+          GroupName: "react-frontEnd"
+        S3Logs:
+          Status: "DISABLED"
           EncryptionDisabled: false
-          Name: "react-sonar"
-          Packaging: "NONE"
-          Type: "CODEPIPELINE"
-        Cache:
-          Type: "NO_CACHE"
-        Environment:
-          ComputeType: "BUILD_GENERAL1_SMALL"
-          Image: "aws/codebuild/standard:5.0"
-          ImagePullCredentialsType: "CODEBUILD"
-          PrivilegedMode: false
-          Type: "LINUX_CONTAINER"
-        ServiceRole: !Sub "arn:aws:iam::${AWS::AccountId}:role/service-role/codebuild-react-frontEnd-service-${AWS::Region}-role"
-        TimeoutInMinutes: 60
-        QueuedTimeoutInMinutes: 480
-        EncryptionKey: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/aws/s3"
-        BadgeEnabled: false
-        LogsConfig:
-          CloudWatchLogs:
-            Status: "ENABLED"
-            GroupName: "react-frontEnd"
-          S3Logs:
-            Status: "DISABLED"
-            EncryptionDisabled: false
 
   #end codeBuild creation
 
@@ -384,7 +384,7 @@ Resources:
                 Version: "1"
               Configuration:
                 Branch: "master"
-                OAuthToken: "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"
+                OAuthToken: "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"
                 Owner: "MichaelMarshal1796"
                 PollForSourceChanges: "false"
                 Repo: "react-starter"
@@ -416,14 +416,14 @@ Resources:
                 Owner: "AWS"
                 Provider: "CodeBuild"
                 Version: "1"
-                Configuration:
-                ProjectName: "react-sonar"
-                InputArtifacts:
+              Configuration:
+                  ProjectName: "react-sonar"
+              InputArtifacts:
                   -
                     Name: "SourceArtifact"
-                    Region: !Ref AWS::Region
-                    Namespace: "react-sonar"
-                    RunOrder: 1
+              Region: !Ref AWS::Region
+              Namespace: "react-sonar"
+              RunOrder: 1
         -
           Name: "Build"
           Actions:
@@ -435,13 +435,13 @@ Resources:
                 Provider: "CodeBuild"
                 Version: "1"
               Configuration:
-                ProjectName: "react-frontEnd"
+                  ProjectName: "react-frontEnd"
               InputArtifacts:
-                -
-                  Name: "SourceArtifact"
+                  -
+                    Name: "SourceArtifact"
               OutputArtifacts:
-                -
-                  Name: "BuildArtifact"
+                  -
+                    Name: "BuildArtifact"
               Region: "eu-west-2"
               Namespace: "BuildVariables"
               RunOrder: 1
