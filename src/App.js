@@ -29,4 +29,7 @@ function App() {
 }
 </header>
 </div>
+()=> {{
+  asd();
+}}
 export default App;
