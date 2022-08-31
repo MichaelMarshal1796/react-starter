@@ -5,8 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const anm = null;
 root.render(
   <React.StrictMode>
+      <div >{{anm.some}}</div>
     <App />
   </React.StrictMode>
 );
