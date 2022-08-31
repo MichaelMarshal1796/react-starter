@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - echo checking sonar front end application
+  build:
+    commands:
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=MichaelMarshal1796_react-starter >result.json
+      - cat result.json
+      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
+      - echo Passed Sonar check
