@@ -384,7 +384,7 @@ Resources:
                 Version: "1"
               Configuration:
                 Branch: "master"
-                OAuthToken: "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"
+                OAuthToken: "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1"
                 Owner: "MichaelMarshal1796"
                 PollForSourceChanges: "false"
                 Repo: "react-starter"
