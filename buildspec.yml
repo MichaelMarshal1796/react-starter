@@ -1,0 +1,21 @@
+version: 0.1
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - echo building front end application
+      - cd web
+  pre-build:
+    commands:
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=MichaelMarshal1796_react-starter >result.json
+      - cat result.json
+      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
+
+  build:
+    commands:
+      - echo build and copy files to S3 bucket
+      - npm install
+      - npm run build
+      - aws s3 sync --delete dist/ s3://sample-react-mike
+      - echo Finished copied to s3 bucket
