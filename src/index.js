@@ -21,7 +21,7 @@ function enforcer(element) {
 }
 root.render(
   <React.StrictMode>
-      <div >{{anm.some}} </div>
+      <div >{{anm.somes}} </div>
     <App />
 
   </React.StrictMode>
