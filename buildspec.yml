@@ -6,7 +6,7 @@ phases:
     commands:
       - echo building front end application
       - cd web
-  pre-build:
+  pre_build:
     commands:
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=MichaelMarshal1796_react-starter >result.json
       - cat result.json
