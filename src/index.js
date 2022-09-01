@@ -19,6 +19,76 @@ function enforcer(element) {
         }
     }
 }
+const anm = null;
+function enforcer(element) {
+    function attributeExists(attributeName) {
+        var errMsgg = attributeName + 'asdsa';
+        return sattis(function () {
+            return element.hasAttribute(attributeName);
+        }, errMsgg)
+    }
+    function refersto(attributeName) {
+        if(!attributeExists(attributeName, element)) {
+            return false;
+        }
+    }
+}
+const anm = null;
+function enforcer(element) {
+    function attributeExists(attributeName) {
+        var errMsgg = attributeName + 'asdsa';
+        return sattis(function () {
+            return element.hasAttribute(attributeName);
+        }, errMsgg)
+    }
+    function refersto(attributeName) {
+        if(!attributeExists(attributeName, element)) {
+            return false;
+        }
+    }
+}
+const anm = null;
+function enforcer(element) {
+    function attributeExists(attributeName) {
+        var errMsgg = attributeName + 'asdsa';
+        return sattis(function () {
+            return element.hasAttribute(attributeName);
+        }, errMsgg)
+    }
+    function refersto(attributeName) {
+        if(!attributeExists(attributeName, element)) {
+            return false;
+        }
+    }
+}
+const anm = null;
+function enforcer(element) {
+    function attributeExists(attributeName) {
+        var errMsgg = attributeName + 'asdsa';
+        return sattis(function () {
+            return element.hasAttribute(attributeName);
+        }, errMsgg)
+    }
+    function refersto(attributeName) {
+        if(!attributeExists(attributeName, element)) {
+            return false;
+        }
+    }
+}
+const anm = null;
+function enforcer(element) {
+    function attributeExists(attributeName) {
+        var errMsgg = attributeName + 'asdsa';
+        return sattis(function () {
+            return element.hasAttribute(attributeName);
+        }, errMsgg)
+    }
+    function refersto(attributeName) {
+        if(!attributeExists(attributeName, element)) {
+            return false;
+        }
+    }
+}
 root.render(
   <React.StrictMode>
     <App />
