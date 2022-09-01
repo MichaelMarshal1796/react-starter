@@ -21,15 +21,7 @@ function enforcer(element) {
 }
 root.render(
   <React.StrictMode>
-      <div >{{anm.somes}} </div>
-      <div >{{enforcer(asd).refersto(asd)}} </div>
-      <div >{{anm.somes}} </div>
-      <div >{{enforcer(asd).refersto(asd)}} </div>
-      <div >{{anm.somes}} </div>
-      <div >{{enforcer(asd).refersto(asd)}} </div>
-
     <App />
-
   </React.StrictMode>
 );
 
